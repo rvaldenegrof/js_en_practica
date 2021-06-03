@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        padding: 50px;
+        background: pink;
+      }
+
+      .playground {
+        border: solid 1px;
+        height: 400px;
+      }
+
+      .playground > div {
+        display: inline-block;
+      }
+
+      .cuadritos div {
+        width: 100px;
+        height: 100px;
+        border: solid 1px;
+      }
+      .background {
+        width: calc(100% - 104px);
+        height: 100%;
+        background: white;
+      }
+    </style>
+</head>
+<body>
+
+    <div class="playground">
+        <div class="cuadritos">
+          <div style="background: red;" class="rojo"></div>
+          <div style="background: blue;" class="azul"></div>
+          <div style="background: yellow;" class="amarillo"></div>
+          <div style="background: green;" class="verde"></div>
+        </div>
+        <div class="background"></div>
+      </div>
+    
+
+    <script>
+      // DOM = Document Object Model
+      // Asignarle eventos a elementos del DOM
+      // Eventos =====> click, scroll, mousemove, keypress, etc etc etc
+      // Manipular elementos del DOM
+      var background = document.getElementsByClassName("background")[0];
+/*       var divRojo = document.getElementsByClassName("rojo")[0];
+      var divAzul = document.getElementsByClassName("azul")[0];
+      var divAmarillo = document.getElementsByClassName("amarillo")[0];
+      var divVerde = document.getElementsByClassName("verde")[0]; */
+
+      // Asignarle un evento
+/*       background.addEventListener("click", function () {
+        alert("Soy goku de noche");
+      }); */
+
+/*       divRojo.addEventListener("click", function(){
+          background.style.background = "red";
+      });
+
+      divAzul.addEventListener("click", function(){
+          background.style.background = "blue";
+      });
+
+      divAmarillo.addEventListener("click", function(){
+          background.style.background = "yellow";
+      });
+
+      divVerde.addEventListener("click", function(){
+          background.style.background = "green";
+      }); */
+
+      var cuadritos = document.querySelectorAll(".cuadritos div")
+
+      cuadritos.forEach(function(cuadrito){//por cada cuadrito
+          cuadrito.addEventListener("click", function(e){ //agrega evento onClick y recive el evento
+            const elementoAfectadoPorEvento = e.target; // almacenar el target
+            const fondo = elementoAfectadoPorEvento.style.background; // almacenar en una variable el fondo
+            background.style.background = fondo; // a fondo le asigna el color del target
+          });
+      });
+      
+    </script>
+</body>
+</html>

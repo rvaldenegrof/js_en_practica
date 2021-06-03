@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <div>
+        <div style="width: 40%;margin: 0 auto">
+            <h2>
+                Escríbenos !!!
+            </h2>
+            <!-- <div class="resultado" style="color:green;font-style: italic"></div> -->
+            <form id="formulario">
+                <p class="estadoMensaje" style="color:green;font-style: italic;"></p>
+                <div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Nombre completo
+                        </label>
+                        <input id="nombre" type="text">
+                        <p class="errorNombre" style="color:red;font-style: italic;"></p>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <label>
+                            Asunto
+                        </label>
+                        <input id="asunto" type="text">
+                        <p class="errorAsunto" style="color:red;font-style: italic;"></p>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column;">
+                    <label>
+                        Mensaje
+                    </label>
+                    <textarea id="mensaje"></textarea>
+                    <p class="errorMensaje" style="color:red;font-style: italic;"></p>
+                </div>
+                <div>
+                    <button id="botton" type="submit">
+                        Envíar mensaje
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+
+    let formulario = document.getElementsByTagName("form")[0];
+    let inputs = document.getElementsByTagName("input");
+    let textMensaje = document.getElementsByTagName("textarea");
+    let parrafo = document.getElementsByTagName("p");
+    let exito = document.getElementsByClassName("estadoMensaje");
+    //console.log(exito);
+
+    let inputNombre = inputs[0];
+    let inputAsunto = inputs[1];
+
+    let textMens = textMensaje[0];
+
+/*     let parrafoNombre = parrafo[0];
+    let parrafoAsunto = parrafo[1];
+    let parrafoMensaje = parrafo[2];
+    let parrafoResultado = parrafo[3]; */
+
+    let parrafoNombre = parrafo[1];
+    let parrafoAsunto = parrafo[2];
+    let parrafoMensaje = parrafo[3];
+    let parrafoResultado = parrafo[0];
+
+
+    formulario.addEventListener("submit", function (event) { 
+            event.preventDefault()
+
+            let nombre = inputNombre.value;
+            let asunto = inputAsunto.value;
+            let mensaje = textMens.value;
+
+            if(nombre == ""){
+                parrafoNombre.innerHTML = "El nombre es requerido";
+            } else {
+                parrafoNombre.innerHTML = "";
+            }
+
+            if(asunto == ""){
+                parrafoAsunto.innerHTML = "El asunto es requerido";
+            } else {
+                parrafoAsunto.innerHTML = "";
+            }
+
+            if(mensaje == ""){
+                parrafoMensaje.innerHTML = "El mensaje es requerido";
+            } else {
+                parrafoMensaje.innerHTML = "";
+            }
+
+            if(nombre !=="" && asunto !== "" && mensaje !==""){
+                parrafoResultado.innerHTML = "Mensaje enviado!";
+                exito.innerHTML = "Hola";
+                
+                //vaciar formulario
+                for(let index = 0; index < inputs.length; index++){
+                    //console.log(index);
+                    inputs[index].value = "";
+                }
+
+                for(let i = 0; i < textMensaje.length; i++){
+                    //console.log(index);
+                    textMensaje[i].value = "";
+                }
+            } else {
+                parrafoResultado.innerHTML = "";
+            }
+        });
+    </script>
+</body>
+
+</html>

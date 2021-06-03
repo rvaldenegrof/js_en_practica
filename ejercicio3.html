@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>
+                Resultado: <span class="resultado"></span>
+            </h2>
+            <div>
+                <div>
+                    <div>
+                        <label for="">Valor 1</label>
+                        <input id="valor1" type="text">
+                    </div>
+                    <div>
+                        <label for="">Valor 2</label>
+                        <input id="valor2" type="text">
+                    </div>
+                    <div style="display: flex">
+                        <button id="btn-sumar" type="button">
+                            Sumar
+                        </button>
+                        <button id="btn-restar" type="button">
+                            Restar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Escríbe aquí tu código
+
+    var num1 = document.getElementById("valor1");
+    var num2 = document.getElementById("valor2");
+    var resultadoSpan = document.getElementsByClassName("resultado")[0];
+
+    var sumar = (a, b) => {
+        var resultado = parseInt(a) + parseInt(b);
+        resultadoSpan.innerHTML = resultado;
+    }
+
+    var restar = (a, b) => {
+        var resultado = parseInt(a) - parseInt(b);
+        
+        if(resultado < 0){
+            resultadoSpan.innerHTML = "0";
+            console.log(resultado);
+        }else {
+            resultadoSpan.innerHTML = resultado;
+        }
+    }
+
+    var btnSuma = document.getElementById("btn-sumar");
+    var btnResta = document.getElementById("btn-restar");
+
+    btnSuma.addEventListener("click", function(x, y){
+        var x = num1.value;
+        var y = num2.value;
+
+        sumar(x, y);
+    });
+
+    btnResta.addEventListener("click", function(x, y){ 
+        var x = num1.value;
+        var y = num2.value;
+
+        restar(x, y)
+       
+    });
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
